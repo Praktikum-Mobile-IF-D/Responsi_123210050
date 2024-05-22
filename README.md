@@ -1,6 +1,8 @@
 # responsid
 
-A new Flutter project.
+Maaf Kak, saya malah push ke repo di akun pribadi.
+
+username dan password saya simpan pakai database hive, di main saya arahkan langsung ke loginpage, bisa diubah ke registerpage jika ingin membuat akun baru. jika ingin coba login bisa menggunakan username=maya dan password=123
 
 ## Getting Started
 
