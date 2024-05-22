@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _userController = UserController(HiveDatabase.getUserBox());
     _bookmarks = _userController.getUserByUsername(widget.username)?.bookmark ?? [];
-    _jobsFuture = JobService.getJobs();
+    //_jobsFuture = JobService.getJobs();
   }
 
   @override
@@ -37,39 +37,39 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Expanded(
-              child: FutureBuilder<List<Job>>(
-                future: _jobsFuture,
-                builder: (context, snapshot) {
-                  if(snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: $snapshot.error'),
-                    );
-                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                     return Center(
-                       child: Text('No job found'),
-                     );
-                  }
-                  final jobs = snapshot.data!;
-
-                  return ListView.builder(
-                      itemCount: jobs.length,
-                      itemBuilder: (context, index) {
-                      final job = jobs[index];
-                      final isBookmark = _bookmarks.contains(index);
-                       return ListTile(
-                         title: Text(job.jobTitle),
-                       )
-
-                    }
-                  );
-                },
-              )
-          )
+          // Expanded(
+          //     child: FutureBuilder<List<Job>>(
+          //       future: _jobsFuture,
+          //       builder: (context, snapshot) {
+          //         if(snapshot.connectionState == ConnectionState.waiting) {
+          //           return Center(
+          //             child: CircularProgressIndicator(),
+          //           );
+          //         } else if (snapshot.hasError) {
+          //           return Center(
+          //             child: Text('Error: $snapshot.error'),
+          //           );
+          //         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          //            return Center(
+          //              child: Text('No job found'),
+          //            );
+          //         }
+          //         final jobs = snapshot.data!;
+          //
+          //         return ListView.builder(
+          //             itemCount: jobs.length,
+          //             itemBuilder: (context, index) {
+          //             final job = jobs[index];
+          //             final isBookmark = _bookmarks.contains(index);
+          //              return ListTile(
+          //                title: Text(job.jobTitle),
+          //              )
+          //
+          //           }
+          //         );
+          //       },
+          //     )
+          // )
         ],
       )
     );
